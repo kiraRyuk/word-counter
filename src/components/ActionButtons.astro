@@ -1,1 +1,9 @@
-<div class="flex flex-wrap gap-3"><button id="clear-text" type="button" class="rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white hover:bg-brand-active">Clear text</button><button id="copy-text" type="button" class="rounded-lg border border-line bg-white px-5 py-3 text-sm font-semibold text-ink hover:bg-soft">Copy text</button></div>
+<div class="flex flex-col gap-3 sm:flex-row">
+  <button id="clear-text" type="button" class="min-h-12 rounded-lg bg-brand px-6 py-3 font-medium text-white transition-colors hover:bg-brand-active">
+    Clear text
+  </button>
+  <button id="copy-text" type="button" class="min-h-12 rounded-lg border border-ink bg-white px-6 py-3 font-medium text-ink transition-colors hover:bg-soft">
+    Copy text
+  </button>
+  <p id="action-status" class="self-center text-sm text-muted" aria-live="polite"></p>
+</div>
