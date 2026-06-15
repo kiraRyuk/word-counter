@@ -1,6 +1,1 @@
-<footer class="border-t border-line bg-soft">
-  <div class="mx-auto flex max-w-content flex-col gap-4 px-4 py-10 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
-    <div><p class="font-semibold text-ink">Word Counter</p><p class="mt-1">Free, private text statistics for better writing.</p></div>
-    <p>Built with Astro and Tailwind CSS.</p>
-  </div>
-</footer>
+<footer class="border-t border-line bg-soft"><div class="mx-auto grid max-w-content gap-10 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-4"><div><a href="/" class="font-semibold text-ink">Word Counter</a><p class="mt-3 text-sm leading-6 text-muted">Free, private text statistics for clearer, more confident writing.</p></div>{[['Tool',['Word Counter|/','Features|/features','FAQ|/faq']],['Company',['About Us|/about','Blog|/blog','Contact Us|/contact']],['Legal',['Privacy Policy|/privacy-policy','Terms & Conditions|/terms-and-conditions','Sitemap|/sitemap.xml']]].map(([title, links]) => <div><h2 class="font-semibold">{title}</h2><ul class="mt-3 space-y-2 text-sm text-muted">{links.map((item) => {const [label,href]=item.split('|'); return <li><a class="hover:text-ink hover:underline" href={href}>{label}</a></li>})}</ul></div>)}</div><div class="border-t border-line"><div class="mx-auto max-w-content px-4 py-5 text-xs text-muted sm:px-6">© 2026 Word Counter. Built for better writing.</div></div></footer>

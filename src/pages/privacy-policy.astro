@@ -1,0 +1,5 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'; import ContentPage from '@/components/ContentPage.astro';
+const sections = [{title:'Text you analyze',paragraphs:['Text entered into the counter is processed in your browser and is not intentionally transmitted to or stored by us.']},{title:'Technical information',paragraphs:['Our hosting provider may process standard request information such as IP addresses and browser details for security and reliability.']},{title:'Cookies and third parties',paragraphs:['The core tool does not require an account or advertising cookies. If this changes, this policy will be updated before those features are introduced.']},{title:'Contact',paragraphs:['Questions about privacy can be sent through our Contact Us page. Last updated: June 15, 2026.']}];
+---
+<BaseLayout title="Privacy Policy | Word Counter" description="Read the Word Counter privacy policy and learn how your text and data are handled." path="/privacy-policy"><ContentPage title="Privacy Policy" intro="Your privacy matters. This policy explains our minimal-data approach." sections={sections} /></BaseLayout>

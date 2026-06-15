@@ -1,0 +1,5 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'; import ContentPage from '@/components/ContentPage.astro';
+const sections = [{title:'Our mission',paragraphs:['Word Counter helps students, writers, educators, and professionals understand their text instantly. We focus on speed, clarity, and accuracy.']},{title:'Privacy first',paragraphs:['Your text is analyzed locally in your browser. We designed the tool so you can work confidently with drafts and documents.']},{title:'Built for real work',paragraphs:['From essays to articles and reports, our straightforward metrics help you meet requirements and improve structure.']} ];
+---
+<BaseLayout title="About Us | Word Counter" description="Learn why Word Counter provides fast, private, and reliable writing statistics." path="/about"><ContentPage title="About Us" intro="We make essential writing metrics accessible to everyone, without accounts, clutter, or hidden costs." sections={sections} /></BaseLayout>
