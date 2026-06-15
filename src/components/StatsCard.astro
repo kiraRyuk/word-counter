@@ -1,0 +1,8 @@
+---
+interface Props { label: string; valueId: string; featured?: boolean; }
+const { label, valueId, featured = false } = Astro.props;
+---
+<article class:list={["rounded-2xl border p-5", featured ? "border-brand bg-brand text-white" : "border-line bg-white"]}>
+  <p class:list={["text-sm font-medium", featured ? "text-white/85" : "text-muted"]}>{label}</p>
+  <p id={valueId} class="mt-2 text-3xl font-bold tabular-nums">0</p>
+</article>
