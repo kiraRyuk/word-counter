@@ -1,0 +1,4 @@
+---
+import StatsCard from './StatsCard.astro';
+---
+<section aria-labelledby="statistics-title"><h2 id="statistics-title" class="mb-4 text-xl font-semibold">Text statistics</h2><div class="grid grid-cols-2 gap-3 lg:grid-cols-5" aria-live="polite"><StatsCard label="Words" valueId="words" featured /><StatsCard label="Characters" valueId="characters" /><StatsCard label="No spaces" valueId="charactersNoSpaces" /><StatsCard label="Sentences" valueId="sentences" /><StatsCard label="Paragraphs" valueId="paragraphs" /></div></section>

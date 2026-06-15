@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TextArea from '@/components/TextArea.astro';
+import FileUploader from '@/components/FileUploader.astro';
+import StatsGrid from '@/components/StatsGrid.astro';
+import ActionButtons from '@/components/ActionButtons.astro';
+---
+<BaseLayout title="Free Word Counter Online | Words, Characters & More" description="Count words, characters, sentences, and paragraphs instantly with a fast, free, and private online word counter.">
+  <section class="mx-auto max-w-4xl px-4 pb-12 pt-16 text-center sm:px-6 sm:pt-24"><p class="text-sm font-bold uppercase tracking-widest text-brand">Fast, free, and private</p><h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-6xl">Count every word.<br /><span class="text-brand">Keep every idea.</span></h1><p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted">A simple online word counter for students, writers, and professionals. Type, paste, or upload a text file to see accurate statistics instantly.</p><a href="#tool" class="mt-8 inline-block rounded-lg bg-brand px-6 py-3 font-semibold text-white hover:bg-brand-active">Start counting</a></section>
+
+  <section id="tool" class="bg-soft py-12 sm:py-16"><div class="mx-auto grid max-w-content gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,.7fr)]"><div class="rounded-2xl border border-line bg-white p-5 shadow-card sm:p-7"><div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"><div><p class="text-sm font-semibold text-brand">Live editor</p><h2 class="mt-1 text-2xl font-semibold">Analyze your text</h2></div><FileUploader /></div><TextArea /><div class="mt-5"><ActionButtons /></div></div><aside><StatsGrid /><div class="mt-5 rounded-2xl border border-line bg-white p-5"><p class="font-semibold">Private by design</p><p class="mt-2 text-sm leading-6 text-muted">Your writing stays in your browser. No account, upload, or storage is required.</p></div></aside></div></section>
+
+  <section id="features" class="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-24"><div class="max-w-2xl"><p class="text-sm font-bold uppercase tracking-widest text-brand">Essential writing metrics</p><h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Everything you need, nothing you don't</h2><p class="mt-4 text-lg text-muted">Quickly check content length and structure without distracting tools or complicated settings.</p></div><div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{['Real-time word count','Characters with spaces','Characters without spaces','Sentence count','Paragraph count','Plain-text file upload'].map((feature) => <article class="rounded-2xl border border-line p-6"><span class="text-brand">●</span><h3 class="mt-4 font-semibold">{feature}</h3><p class="mt-2 text-sm leading-6 text-muted">Updates instantly and follows the documented counting rules.</p></article>)}</div></section>
+
+  <section id="how-it-works" class="border-y border-line bg-soft"><div class="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-24"><h2 class="text-center text-3xl font-bold tracking-tight">From draft to statistics in seconds</h2><ol class="mt-10 grid gap-6 md:grid-cols-3">{[['1','Add your text','Type, paste, or select a .txt file.'],['2','Review live totals','See five essential metrics update immediately.'],['3','Clear and continue','Reset the editor and begin your next draft.']].map(([number,title,copy]) => <li class="rounded-2xl bg-white p-6 shadow-sm"><span class="grid size-9 place-items-center rounded-full bg-brand text-sm font-bold text-white">{number}</span><h3 class="mt-5 font-semibold">{title}</h3><p class="mt-2 text-sm leading-6 text-muted">{copy}</p></li>)}</ol></div></section>
+
+  <script>
+    import { getTextStatistics } from '@/utils/statistics';
+    import { readTextFile } from '@/utils/fileReader';
+
+    const textInput = document.querySelector<HTMLTextAreaElement>('#text-input');
+    const fileInput = document.querySelector<HTMLInputElement>('#file-upload');
+    const clearButton = document.querySelector<HTMLButtonElement>('#clear-text');
+    const copyButton = document.querySelector<HTMLButtonElement>('#copy-text');
+    const errorMessage = document.querySelector<HTMLParagraphElement>('#error-message');
+    const metricIds = ['words', 'characters', 'charactersNoSpaces', 'sentences', 'paragraphs'] as const;
+
+    const showError = (message = '') => { if (!errorMessage) return; errorMessage.textContent = message; errorMessage.classList.toggle('hidden', !message); };
+    const updateStatistics = () => { if (!textInput) return; const statistics = getTextStatistics(textInput.value); metricIds.forEach((id) => { const output = document.querySelector<HTMLElement>(`#${id}`); if (output) output.textContent = String(statistics[id]); }); };
+
+    textInput?.addEventListener('input', () => { showError(); updateStatistics(); });
+    clearButton?.addEventListener('click', () => { if (!textInput) return; textInput.value = ''; if (fileInput) fileInput.value = ''; showError(); updateStatistics(); textInput.focus(); });
+    copyButton?.addEventListener('click', async () => { if (!textInput) return; try { await navigator.clipboard.writeText(textInput.value); copyButton.textContent = 'Copied'; setTimeout(() => copyButton.textContent = 'Copy text', 1500); } catch { showError('Unable to copy the text.'); } });
+    fileInput?.addEventListener('change', async () => { const file = fileInput.files?.[0]; if (!file || !textInput) return; try { textInput.value = await readTextFile(file); showError(); updateStatistics(); } catch (error) { showError(error instanceof Error ? error.message : 'Unable to read the selected file.'); fileInput.value = ''; } });
+  </script>
+</BaseLayout>
