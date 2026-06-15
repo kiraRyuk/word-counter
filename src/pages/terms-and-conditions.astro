@@ -1,0 +1,5 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'; import ContentPage from '@/components/ContentPage.astro';
+const sections = [{title:'Using the service',paragraphs:['You may use Word Counter for lawful personal, educational, and commercial writing tasks. Do not attempt to disrupt or misuse the service.']},{title:'Accuracy and availability',paragraphs:['We work to provide accurate statistics, but the service is provided as-is without guarantees of uninterrupted availability or suitability for a specific purpose.']},{title:'Your content',paragraphs:['You retain all rights to text you enter. You are responsible for ensuring you have permission to use that content.']},{title:'Changes',paragraphs:['We may update these terms as the service evolves. Last updated: June 15, 2026.']}];
+---
+<BaseLayout title="Terms & Conditions | Word Counter" description="Review the terms and conditions for using the free Word Counter tool." path="/terms-and-conditions"><ContentPage title="Terms & Conditions" intro="By using Word Counter, you agree to these straightforward terms." sections={sections} /></BaseLayout>

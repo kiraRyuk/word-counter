@@ -1,7 +1,7 @@
-<header class="border-b border-line bg-white">
+<header class="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
   <div class="mx-auto flex h-20 max-w-content items-center justify-between px-4 sm:px-6">
     <a href="/" class="flex items-center gap-3 rounded-lg font-semibold text-ink" aria-label="Word Counter home"><span class="grid size-10 place-items-center rounded-full bg-brand font-bold text-white">W</span><span>Word Counter</span></a>
-    <nav class="hidden items-center gap-6 text-sm font-medium text-muted sm:flex" aria-label="Main navigation"><a class="hover:text-ink" href="/#tool">Tool</a><a class="hover:text-ink" href="/#features">Features</a><a class="hover:text-ink" href="/#how-it-works">How it works</a></nav>
-    <a href="/#tool" class="rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-active">Count words</a>
+    <nav class="hidden items-center gap-6 text-sm font-medium text-muted lg:flex" aria-label="Main navigation"><a class="hover:text-ink" href="/#tool">Tool</a><a class="hover:text-ink" href="/features">Features</a><a class="hover:text-ink" href="/about">About Us</a><a class="hover:text-ink" href="/faq">FAQ</a><a class="hover:text-ink" href="/blog">Blog</a><a class="hover:text-ink" href="/contact">Contact Us</a></nav>
+    <details class="relative lg:hidden"><summary class="cursor-pointer list-none rounded-lg border border-line px-4 py-2 font-medium">Menu</summary><nav class="absolute right-0 mt-3 w-56 rounded-2xl border border-line bg-white p-3 shadow-card" aria-label="Mobile navigation">{[['Tool','/#tool'],['Features','/features'],['About Us','/about'],['FAQ','/faq'],['Blog','/blog'],['Contact Us','/contact'],['Privacy Policy','/privacy-policy'],['Terms & Conditions','/terms-and-conditions']].map(([label,href]) => <a class="block rounded-lg px-3 py-2.5 text-sm hover:bg-soft" href={href}>{label}</a>)}</nav></details>
   </div>
 </header>
